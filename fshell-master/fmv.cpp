@@ -1,5 +1,5 @@
 #include"shell.h"
-int main(int argc, char * argv[] ){
+int Fmv(int argc, char **argv ){
 	FILE * source = fopen(argv[1],"r");
 	if(source==NULL){
 		perror ("file no exsit!\n");
@@ -29,7 +29,7 @@ int main(int argc, char * argv[] ){
 				char c;
 				fread(&c,1,1,source);
 				fwrite(&c,1,1,target);
-			}	
+			}
 			fclose(target);
 			remove(argv[1]);  //删除源文件
 		}
@@ -39,12 +39,12 @@ int main(int argc, char * argv[] ){
 				char c;
 				fread(&c,1,1,source);
 				fwrite(&c,1,1,target);
-			}	
+			}
 			fclose(target);
 			remove(argv[1]);  //删除源文件
 		}
-		
+
 	}
 	fclose(source);
-
+	return 0;
 }

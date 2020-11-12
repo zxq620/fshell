@@ -1,5 +1,5 @@
 #include"shell.h"
- 
+
 /*判断输入的年份是否为闰年
 **参数说明：year,要判断的年份
 **返回值 1：是闰年，0：不是闰年
@@ -9,11 +9,11 @@ int Isleap(int year)
     if( (year%400==0)||((year%4==0)&&(year%100!=0)) )
         return 1;
     else
-        return 0;    
+        return 0;
 }
- 
+
 /*判断输入年份二月份的天数
-**参数说明：year,要判断的年份；month，要判断的月份 
+**参数说明：year,要判断的年份；month，要判断的月份
 **返回值:Day[month-1],上个月（month-1）的天数
 */
 int Max_day(int year, int month)
@@ -23,8 +23,8 @@ int Max_day(int year, int month)
         Day[1]=29;
     return Day[month-1];
 }
- 
- 
+
+
 /*计算输入的日期是这一年的多少天
 **参数说明：year,month,day 分别为输入的年、月、日
 **返回值:sum,输入的日期是这一年的多少天
@@ -38,7 +38,7 @@ int Total_day(int year, int month ,int day)
     sum=sum+day;
     return sum;
 }
- 
+
 /*由输入的日期判断当天是星期几
 **参数说明：year,month,day 分别为输入的年、月、日
 **返回值:count,0～6，分别表示星期日～星期六
@@ -50,8 +50,8 @@ int Weekday(int year, int month ,int day)
     count=count%7;
     return count;
 }
- 
- 
+
+
 /*显示输入的日期是星期几
 **参数说明：year,month,day 分别为输入的年、月、日
 **返回值:无
@@ -72,7 +72,7 @@ void display_week(int year, int month , int day)
             default: printf("error\n");
         }
 }
- 
+
 /*显示输入的日期的当月日历
 **参数说明：year,month,day 分别为输入的年、月、日
 **返回值:无
@@ -96,18 +96,18 @@ void display_month(int year, int month, int day)
     }
     printf("\n");
 }
- 
- 
-int main()
+
+
+int Fcal()
 {
     int year,month,day;
-    printf("\tplease enter year,month,day: ");
-    scanf("%d %d %d",&year,&month,&day);
-    if(month<1||month>12||day<1||day>31)
-    {
-        printf("error...\n");
-        return -1;
-    }
+    struct tm *sysTime;
+     time_t nowTime;
+     time(&nowTime);
+     sysTime=localtime(&nowTime);
+    year=1900+sysTime->tm_year;
+    month=sysTime->tm_mon+1;
+    day=sysTime->tm_mday;
     printf("\033[32m\t%d年%d月%d日是这一年的第%d天\n\033[0m",year,month,day,Total_day(year,month,day));
     display_week(year,month,day);
     display_month(year,month,day);

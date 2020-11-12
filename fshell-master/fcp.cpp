@@ -1,5 +1,5 @@
 #include"shell.h"
-int main(int argc, char * argv[] ){
+int Fcp(int argc, char **argv ){
 	FILE * source = fopen(argv[1],"r");
 	if(source==NULL){
 		perror ("file no exsit!\n");
@@ -31,7 +31,7 @@ int main(int argc, char * argv[] ){
 				char c;
 				fread(&c,1,1,source);
 				fwrite(&c,1,1,target);
-			}	
+			}
 			fclose (target);
 		}else{//目标路径是个文件
 			FILE * target = fopen(argv[2],"w+");
@@ -40,9 +40,10 @@ int main(int argc, char * argv[] ){
 				fread(&c,1,1,source);
 				fwrite(&c,1,1,target);
 				//fputc(fgetc(source),target);
-			}	
+			}
 			fclose (target);
 		}
 		fclose (source);
 	}
+return 0;
 }

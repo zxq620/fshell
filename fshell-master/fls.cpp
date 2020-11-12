@@ -27,7 +27,7 @@ void list_func(char*path,int depth)
     chdir("..");  
     closedir(pDirHandle);  
 }  
-int main(int argc,char**argv)  {     
+int Fls(int argc,char**argv)  {     
     char *pDirPath;
     if(argc==1){  
   	pDirPath = ".";

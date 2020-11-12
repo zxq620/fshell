@@ -1,7 +1,7 @@
 #include"shell.h"
 
-//linux²Ù×÷Ö¸Áîrm
-int main(int argc, char *argv[])
+
+int Frm(int argc, char **argv)
 {
     int rt;
     if(argc != 2){
@@ -12,5 +12,5 @@ int main(int argc, char *argv[])
             exit(3);
         }
     }
-    return 0;
+return 0;
 }

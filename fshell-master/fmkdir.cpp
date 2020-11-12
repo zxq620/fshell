@@ -51,18 +51,16 @@ int mk_all_dir(char *dir)
     return 0;
 }
 
-int main()
+int Fmkdir(int argc, char **argv )
 {
-    char buffer[512] = {0};
-    printf("please input path name:\n");
-    fgets(buffer, sizeof(buffer), stdin);
-    char *pIndex = index(buffer, '\n');
+
+    char *pIndex = index(argv[1], '\n');
     if (pIndex != NULL){
         *pIndex = '/';
     }
-    int ret = mk_all_dir(buffer);
+    int ret = mk_all_dir(argv[1]);
     if (ret < 0) {
-        printf("%s mkdir failed!\n", buffer);
+        printf("%s mkdir failed!\n", argv[1]);
         return -1;
     }
 

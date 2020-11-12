@@ -19,7 +19,7 @@ return 1;
 }
 }  
 
-int main(int argc, char *argv[]){
+int Fyes(int argc, char **argv){
     while(1)
 
 {
